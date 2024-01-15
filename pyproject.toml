@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "clinica"
+version = "0.1.0"
+description = "programa base de dados"
+authors = ["cardrocha <cardrocharj@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+Django = "^5.0.1"
+django-rest-framework = "^0.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

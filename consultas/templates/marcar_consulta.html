@@ -1,0 +1,30 @@
+<!-- Crie o arquivo 'marcar_consulta.html' dentro da pasta 'consultas/templates/' -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcar Consulta</title>
+</head>
+<body>
+    <h2>Marcar Consulta</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="paciente_id">Selecione o Paciente:</label>
+        <select name="paciente_id" required>
+            {% for paciente in pacientes %}
+                <option value="{{ paciente.id }}">{{ paciente.nome }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="dia">Dia:</label>
+        <input type="date" name="dia" required><br>
+        <label for="hora">Hora:</label>
+        <input type="time" name="hora" required><br>
+        <label for="especialidade">Especialidade:</label>
+        <input type="text" name="especialidade" required><br>
+        <button type="submit">Marcar Consulta</button>
+    </form>
+    <a href="{% url 'index' %}">Voltar para o Menu principal</a>
+</body>
+</html>

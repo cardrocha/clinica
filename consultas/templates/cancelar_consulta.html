@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cancelar Consulta</title>
+  </head>
+  <body>
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    <h2>Cancelar Consulta</h2>
+    <form method="post">
+      {% csrf_token %}
+      <label for="agendamento_id">Selecione a Consulta:</label>
+      <select name="agendamento_id" required>
+        {% for agendamento in agendamentos %}
+        <option value="{{ agendamento.id }}">
+          Consulta em {{ agendamento.dia }} às {{ agendamento.hora }} - {{
+          agendamento.especialidade }}
+        </option>
+        {% endfor %}</select
+      ><br />
+      <button type="submit">Cancelar Consulta</button>
+    </form>
+    <a href="{% url 'index' %}">Voltar para o Menu principal</a>
+  </body>
+</html>
